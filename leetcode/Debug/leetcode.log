@@ -1,0 +1,67 @@
+﻿生成启动时间为 2015/9/4 19:05:35。
+     1>项目“C:\Users\青松\Documents\Visual Studio 2013\Projects\leetcode\leetcode\leetcode.vcxproj”在节点 2 上(Build 个目标)。
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp
+         main.cpp
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\青松\Documents\Visual Studio 2013\Projects\leetcode\Debug\leetcode.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\青松\Documents\Visual Studio 2013\Projects\leetcode\Debug\leetcode.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\青松\Documents\Visual Studio 2013\Projects\leetcode\Debug\leetcode.lib" /MACHINE:X86 Debug\AddBinary.obj
+         Debug\AddTwoNumbers.obj
+         Debug\BasicCalculator2.obj
+         Debug\BestTimeToBuyAndSellStock.obj
+         Debug\BinaryTreeTraversal.obj
+         Debug\CombinationSum.obj
+         Debug\DetectCycle.obj
+         Debug\DivideTwoIntegers.obj
+         Debug\EditDistance.obj
+         Debug\FirstMissingPositive.obj
+         Debug\FourSum.obj
+         Debug\houserobber.obj
+         Debug\houserobber2.obj
+         Debug\ImplementStrstr.obj
+         Debug\InvertBinaryTree.obj
+         Debug\LongestPalindromicSubstring.obj
+         Debug\LongestSubstringWithoutRepeatingCharacters.obj
+         Debug\main.obj
+         Debug\MajorityElement.obj
+         Debug\maxArea.obj
+         Debug\MergekSortedLists.obj
+         Debug\MergeSortedArray.obj
+         Debug\MinimumWindowSubstring.obj
+         Debug\MinStack.obj
+         Debug\MultiplyStrings.obj
+         Debug\NextPermutation.obj
+         Debug\NumberOfDigitOne.obj
+         Debug\PalindromeNumber.obj
+         Debug\PathSum.obj
+         Debug\QuickSort.obj
+         Debug\RegularExpressionMatch.obj
+         Debug\RemoveDuplicatesFromSortedList.obj
+         Debug\RemoveLinkedListElements.obj
+         Debug\RemoveNthNodeFromEndOfList.obj
+         Debug\ReoderList.obj
+         Debug\RepeatedDNASequences.obj
+         Debug\ReverseNodesInKGroup.obj
+         Debug\RotateArray.obj
+         Debug\RotateImage.obj
+         Debug\SearchforaRange.obj
+         Debug\SearchinRotatedSortedArray.obj
+         Debug\SearchInsertPostion.obj
+         Debug\ShortestPalindrome.obj
+         Debug\SlidingWindowMaximum.obj
+         Debug\SortColors.obj
+         Debug\SortList.obj
+         Debug\String2Integer.obj
+         Debug\SubstringWithConcatenationofAllWords.obj
+         Debug\SumRoot2LeafNumbers.obj
+         Debug\SymmetricTree.obj
+         Debug\TheLargestNum.obj
+         Debug\ThreeSum.obj
+         Debug\TrappingRainWater.obj
+         Debug\TwoSum.obj
+         Debug\ZigZagConversion.obj
+         leetcode.vcxproj -> C:\Users\青松\Documents\Visual Studio 2013\Projects\leetcode\Debug\leetcode.exe
+     1>已完成生成项目“C:\Users\青松\Documents\Visual Studio 2013\Projects\leetcode\leetcode\leetcode.vcxproj”(Build 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:02.10
