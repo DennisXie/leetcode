@@ -138,6 +138,7 @@ class LFUCache:
         node = self._list.pop(node)
         node.data.freq += 1
         # 如果没有找到这个频率的首节点那么就插入到队首
+        # BUG: 没有找到频率不一定就代表可以插到头节点里去
         freq_node = self._freq_map.get(node.data.freq, self._list.head)
         self._list.insert_before(node, freq_node)
         self._freq_map[node.data.freq] = node
