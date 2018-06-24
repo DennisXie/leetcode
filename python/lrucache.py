@@ -113,6 +113,7 @@ if __name__ == "__main__":
     print(cache.get(1))
     cache.put(3, 3)
     print(cache.get(2))
+    print(cache.get(3))
     cache.put(4, 4)
     print(cache.get(1))
     print(cache.get(3))
