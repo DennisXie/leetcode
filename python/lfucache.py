@@ -135,12 +135,15 @@ class LFUCache:
                 self._freq_map[node.data.freq] = node.pnext
             else:
                 del self._freq_map[node.data.freq]
-        node = self._list.pop(node)
+            old_freq_node = node.pnext
+        else:
+            old_freq_node = self._freq_map[node.data.freq]
         node.data.freq += 1
-        # 如果没有找到这个频率的首节点那么就插入到队首
-        # BUG: 没有找到频率不一定就代表可以插到头节点里去
-        freq_node = self._freq_map.get(node.data.freq, self._list.head)
-        self._list.insert_before(node, freq_node)
+        freq_node = self._freq_map.get(node.data.freq, old_freq_node)
+        # 如果freq_node节点不是自己的下一个节点，那么就表示需要移动当前节点的位置
+        if freq_node is not node.pnext:
+            node = self._list.pop(node)
+            self._list.insert_before(node, freq_node)
         self._freq_map[node.data.freq] = node
 
     def try_del_lfu_node(self):
