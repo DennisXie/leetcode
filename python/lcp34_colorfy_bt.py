@@ -6,6 +6,9 @@ class TreeNode:
 
 
 class Solution:
+    """
+    本题其他思路，可以考虑findMax返回列表，表示染色多少个节点，然后对左右子树进行遍历求解。比起目前的解法可以减少很多次函数调用时间
+    """
 
     def maxValue(self, root: TreeNode, k: int) -> int:
         self.k = k
