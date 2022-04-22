@@ -30,6 +30,7 @@ class Solution:
                     windows.append([equal, i-1, i])
                 elif windows[-1][0] == equal:
                     windows[-1][2] = i
+
         for i in range(len(windows)):
             window = windows[i]
             last_window = None if i < 1 else windows[i-1]
