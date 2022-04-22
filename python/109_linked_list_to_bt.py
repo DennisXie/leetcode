@@ -12,6 +12,7 @@ class TreeNode:
 
 
 class Solution:
+    """此题可以的list实际上是个中序遍历，采用类似中序遍历的方式可以还原BST，时间复杂度为O(n)"""
 
     def sortedListToBST(self, head: ListNode) -> TreeNode:
         return self.build(head, None)
