@@ -4,6 +4,7 @@ from typing import List
 class Solution:
 
     def candy2(self, ratings: List[int]) -> int:
+        """官方解法更为精妙，把下降序列当作上升序列来给，遇到下降序列和上升序列一样长那就把上升序列的最后一个包含进来"""
         if len(ratings) == 1:
             return 1
 
