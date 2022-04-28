@@ -1,29 +1,48 @@
 from typing import List
 
+
 class Solution:
+    class Around(object):
+
+        def __init__(self):
+            self.left = 0
+            self.right = 0
+            self.up = 0
+            self.down = 0
 
     def trapRainWater(self, heightMap: List[List[int]]) -> int:
+        arounds = [[Solution.Around() for _ in range(len(heightMap[0]))] for _ in range(len(heightMap))]
 
-        def make()->List[List[int]]:
-            return [[0] * len(heightMap[0]) for _ in len(heightMap)]
-        i_right_max = make()
-        i_left_max = make()
-        j_up_max = make()
-        j_down_max = make()
         for i in range(len(heightMap)):
             for j in range(len(heightMap[0])):
-                i_left_max[i][j] = max(heightMap[i][j], i_left_max[i][j-1]) if j-1>=0 else 0
+                arounds[i][j].left = max(heightMap[i][j-1], arounds[i][j-1].left) if j-1 >= 0 else 0
             for j in range(len(heightMap[0])-1, -1, -1):
-                i_right_max[i][j] = max(heightMap[i][j], i_right_max[i][j+1]) if j+1<len(heightMap) else 0
+                arounds[i][j].right = max(heightMap[i][j+1], arounds[i][j+1].right) if j+1 < len(heightMap[0]) else 0
 
         for j in range(len(heightMap[0])):
             for i in range(len(heightMap)):
-                j_up_max[i][j] = max(heightMap[i][j], j_up_max[i-1][j]) if i-1>=0 else 0
-            for j in range(len(heightMap)-1, -1, -1):
-                j_down_max[i][j] = max(heightMap[i][j], j_down_max[i+1][j]) if i+1<len(heightMap[0]) else 0
+                arounds[i][j].up = max(heightMap[i-1][j], arounds[i-1][j].up) if i-1 >= 0 else 0
+            for i in range(len(heightMap)-1, -1, -1):
+                arounds[i][j].down = max(heightMap[i+1][j], arounds[i+1][j].down) if i+1 < len(heightMap) else 0
 
+        count = 0
         for i in range(len(heightMap)):
             for j in range(len(heightMap[0])):
-                pass
+                around = arounds[i][j]
+                min_height = min(around.left, around.right, around.up, around.down)
+                if min_height > heightMap[i][j]:
+                    count = count + min_height - heightMap[i][j]
+        return count
 
 
+if __name__ == "__main__":
+    print(Solution().trapRainWater([[1,4,3,1,3,2],[3,2,1,3,2,4],[2,3,3,2,3,1]]))
+    print(Solution().trapRainWater([[3,3,3,3,3],[3,2,2,2,3],[3,2,1,2,3],[3,2,2,2,3],[3,3,3,3,3]]))
+    # fail case, you need dfs or bfs to fill all position
+    print(Solution().trapRainWater([
+        [12,13,1,12],
+        [13,4,13,12],
+        [13,8,10,12],
+        [12,13,12,12],
+        [13,13,13,13]]
+))
