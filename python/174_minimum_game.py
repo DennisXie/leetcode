@@ -1,32 +1,29 @@
 from typing import List
 
+
 class Solution:
+
     def calculateMinimumHP(self, dungeon: List[List[int]]) -> int:
-        hp = [[(0, 0) for _ in range(len(dungeon[0]))] for _ in range(len(dungeon))]
+        hp = [[0 for _ in range(len(dungeon[0]))] for _ in range(len(dungeon))]
 
-        hp[0][0] = (-dungeon[0][0], -dungeon[0][0])
-        for i in range(1, len(dungeon)):
-            hp_left = hp[i-1][0][1]+dungeon[i][0]
-            hp[i][0] = (min(hp[i-1][0][0], hp_left), hp_left)
-        for j in range(1, len(dungeon[0])):
-            hp_left = hp[0][j-1][1]+dungeon[0][j]
-            hp[0][j] = (min(hp[0][j-1][0], hp_left), hp_left)
+        hp[-1][-1] = 1 if 1 - dungeon[-1][-1] <= 0 else 1 - dungeon[-1][-1]
+        for i in range(len(dungeon)-2, -1, -1):
+            hp_left = hp[i+1][-1] - dungeon[i][-1]
+            hp[i][-1] = 1 if hp_left <= 0 else hp_left
+        for j in range(len(dungeon[0])-2, -1, -1):
+            hp_left = hp[-1][j+1] - dungeon[-1][j]
+            hp[-1][j] = 1 if hp_left <= 0 else hp_left
 
-        for i in range(1, len(dungeon)):
-            for j in range(1, len(dungeon[0])):
-                hp_left1 = hp[i-1][j][1]+dungeon[i-1][j]
-                minimum1 = min(hp[i-1][j][0], hp_left1)
-                hp_left2 = hp[i][j-1][1]+dungeon[i][j-1]
-                minimum2 = min(hp[i][j-1][0], hp_left2)
-                if minimum1 > minimum2:
-                    hp[i][j] = (minimum1, hp_left1)
-                elif minimum1 < minimum2:
-                    hp[i][j] = (minimum2, hp_left2)
-                else:
-                    hp[i][j] = (minimum1, hp_left1) if hp_left1 > hp_left2 else (minimum2, hp_left2)
-
-        return 1 if hp[-1][-1][0] >= 0 else abs(hp[-1][-1][0]) + 1
+        for i in range(len(dungeon)-2, -1, -1):
+            for j in range(len(dungeon[0])-2, -1, -1):
+                hp_down = 1 if hp[i+1][j] - dungeon[i][j] <= 0 else hp[i+1][j] - dungeon[i][j]
+                hp_right = 1 if hp[i][j+1] - dungeon[i][j] <= 0 else hp[i][j+1] - dungeon[i][j]
+                hp[i][j] = min(hp_down, hp_right)
+        return hp[0][0]
 
 
 if __name__ == "__main__":
-    print(Solution().calculateMinimumHP(None))
+    print(Solution().calculateMinimumHP([
+        [0, -2],
+        [-1, 0]
+    ]))
