@@ -1,4 +1,33 @@
+from functools import lru_cache
+
 class Solution:
+
+    def isMatch2(self, s: str, p: str) -> bool:
+
+        @lru_cache()
+        def match(i: int, j: int) -> bool:
+            if i == len(s) and j == len(p):
+                return True
+            if j == len(p):
+                return False
+
+            # if i >= len(s):
+            #     if j+1 < len(p) and p[j+1] == '*':
+            #         return match(i, j+2)
+            #     else:
+            #         return False
+
+            if j+1 < len(p) and p[j+1] == '*':
+                if i < len(s) and (s[i] == p[j] or p[j] == '.'):
+                    return match(i+1, j) or match(i, j+2) or match(i+1, j+2)
+                else:
+                    return match(i, j+2)
+            else:
+                if i < len(s) and s[i] == p[j] or p[j] == '.':
+                    return match(i+1, j+1)
+                else:
+                    return False
+        return match(0, 0)
 
     def isMatch(self, s: str, p: str) -> bool:
 
@@ -47,13 +76,13 @@ class Solution:
 
 
 if __name__ == "__main__":
-    # print(Solution().isMatch('ab', 'ab'))
-    # print(Solution().isMatch('ab', 'a.'))
-    # print(Solution().isMatch('ab', '.*'))
-    # print(Solution().isMatch('abc', '.*c'))
-    # print(Solution().isMatch('a', 'ab*'))
-    print(Solution().isMatch("aasdfasdfasdfasdfas", "aasdf.*asdf.*asdf.*asdf.*s"))
-    # print(Solution().isMatch('aaabaa', 'a*.a*'))
-    # print(Solution().isMatch('baa', 'a*.a*'))
-    # print(Solution().isMatch('aaa', 'ab*a*c*a'))
-    # print(Solution().isMatch('abc', '.*abc'))
+    print(Solution().isMatch2('ab', 'ab'))
+    print(Solution().isMatch2('ab', 'a.'))
+    print(Solution().isMatch2('ab', '.*'))
+    print(Solution().isMatch2('abc', '.*c'))
+    print(Solution().isMatch2('a', 'ab*'))
+    print(Solution().isMatch2("aasdfasdfasdfasdfas", "aasdf.*asdf.*asdf.*asdf.*s"))
+    print(Solution().isMatch2('aaabaa', 'a*.a*'))
+    print(Solution().isMatch2('baa', 'a*.a*'))
+    print(Solution().isMatch2('aaa', 'ab*a*c*a'))
+    print(Solution().isMatch2('abc', '.*abc'))
