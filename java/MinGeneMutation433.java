@@ -2,11 +2,11 @@ public class MinGeneMutation433 {
 
     public int minMutation(String start, String end, String[] bank) {
         int[][] distance = new int[bank.length + 1][bank.length + 1];
-        int end_idx = 0;
+        int end_idx = -1;
         for (int i = 0; i < bank.length; i++) {
             distance[0][i+1] = unimpeded(start, bank[i]);
             distance[i+1][0] = distance[0][i+1];
-            if (end == bank[i]) {
+            if (end.equals(bank[i])) {
                 end_idx = i+1;
             }
         }
@@ -30,7 +30,7 @@ public class MinGeneMutation433 {
                 }
             }
         }
-        return distance[0][end_idx];
+        return end_idx >= 0 ? distance[0][end_idx] : -1;
     }
 
     private int unimpeded(String start, String end) {
@@ -44,9 +44,11 @@ public class MinGeneMutation433 {
     }
 
     static public void main(String[] args) {
-        String start = "";
-        String end = "";
+        String start = "AACCGGTT";
+        String end = "AACCGGTA";
         String[] bank = {};
+        MinGeneMutation433 solution = new MinGeneMutation433();
+        System.out.println(solution.minMutation(start, end, bank));
         
     }
 }
