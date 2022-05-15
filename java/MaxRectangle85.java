@@ -6,6 +6,14 @@ import java.util.stream.IntStream;
 import java.util.stream.StreamSupport;
 
 public class MaxRectangle85 {
+    /**
+     * Similar to the 84. We enumerate each row as the rectangle's bottom edge,
+     * we can calculate the height of each index depending on the last row's height.
+     * The defines of the height is the continuous '1' on the vertical. Then this
+     * question becomes find the answer of 84 on each row.
+     * @param matrix
+     * @return
+     */
     public int maximalRectangle(char[][] matrix) {
         short rows = (short) matrix.length;
         short cols = (short) matrix[0].length;

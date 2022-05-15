@@ -2,6 +2,13 @@ import java.util.Arrays;
 import java.util.Stack;
 
 public class LargestRectangleArea84 {
+    /**
+     * We enum the heights[i] to be the lowest post(or the rectangle's height).
+     * So we need to know the index of the nearest miner heights[j] on the both
+     * side. The nearest miner or bigger thing can remind us of monotonic stack.
+     * @param heights
+     * @return
+     */
     public int largestRectangleArea(int [] heights) {
         int[] left = new int[heights.length];
         int[] right = new int[heights.length];
