@@ -1,4 +1,5 @@
 import java.util.Comparator;
+import java.util.HashSet;
 import java.util.PriorityQueue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -29,6 +30,7 @@ public class FooBar {
     synchronized public void tryEverything() {
         ReentrantLock lock = new ReentrantLock();
         AtomicInteger atomicInteger = new AtomicInteger();
+        new HashSet<Integer>();
         PriorityQueue<Pair<Integer, Integer>> queue = new PriorityQueue<>(Comparator.comparingInt(Pair::getLeft));
         synchronized (lock) {
             tryEverything();
